@@ -15,8 +15,7 @@ public class StoredFileServiceImpl implements StoredFileService {
 	private final StoredFileRepository storedFileRepository;
 
 	private static final String ERROR_MESSAGE = "File to update not found";
-	
-	@Autowired
+
 	public StoredFileServiceImpl(StoredFileRepository storedFileRepository) {
 		super();
 		this.storedFileRepository = storedFileRepository;
@@ -97,7 +96,7 @@ public class StoredFileServiceImpl implements StoredFileService {
 	@Override
 	public void delete(Long id) throws Exception {
 		StoredFile storedFile = storedFileRepository.findById(id)
-				.orElseThrow(() -> new Exception());
+				.orElseThrow(Exception::new);
 		storedFileRepository.delete(storedFile);
 	}
 }

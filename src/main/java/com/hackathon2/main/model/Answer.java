@@ -1,4 +1,4 @@
-package com.hackathon2.model;
+package com.hackathon2.main.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,17 +7,16 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table(name = "activity")
+@Table(name = "answer")
 @NoArgsConstructor
-public class Activity {
+public class Answer {
     @Id
     @Column("id")
     private Long id;
     @Column("name")
     private String name;
-
-    public Activity(String name) {
-        this.name = name;
-    }
+    @Column("is_correct")
+    private Boolean isCorrect;
+    @Column("test_id")
+    private Long testId;
 }
-

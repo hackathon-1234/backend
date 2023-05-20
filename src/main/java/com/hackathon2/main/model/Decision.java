@@ -1,4 +1,4 @@
-package com.hackathon2.model;
+package com.hackathon2.main.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

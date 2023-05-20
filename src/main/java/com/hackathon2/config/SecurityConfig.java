@@ -28,17 +28,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers( "/token").permitAll()
-                .and().csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                    .httpBasic()
-
+                    .antMatchers( "/token").permitAll()
+                .and()
+                    .csrf().disable()
+                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//              .and()
+//                  .httpBasic()
                 .and()
                     .authorizeRequests()
                     .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(tokenService),
+                    .addFilterBefore(new JwtAuthenticationFilter(tokenService),
                         UsernamePasswordAuthenticationFilter.class);
     }
 

@@ -2,7 +2,7 @@ package com.hackathon2.auth.service;
 
 import com.hackathon2.auth.data.User;
 import com.hackathon2.auth.data.UserPrincipal;
-import com.hackathon2.repository.UserRepository;
+import com.hackathon2.auth.repo.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

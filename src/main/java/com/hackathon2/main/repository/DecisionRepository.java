@@ -1,6 +1,6 @@
-package com.hackathon2.repository;
+package com.hackathon2.main.repository;
 
-import com.hackathon2.model.Decision;
+import com.hackathon2.main.model.Decision;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

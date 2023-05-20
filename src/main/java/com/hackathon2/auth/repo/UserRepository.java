@@ -1,4 +1,4 @@
-package com.hackathon2.repository;
+package com.hackathon2.auth.repo;
 
 import com.hackathon2.auth.data.User;
 import org.springframework.data.repository.CrudRepository;

@@ -1,4 +1,4 @@
-package com.hackathon2.model;
+package com.hackathon2.main.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,12 +15,11 @@ public class Question {
     private Long id;
     @Column("name")
     private String name;
+    @Column("question_id")
+    private Long questionId;
 
-    @Column("test_id")
-    private Long testId;
-
-    public Question(String name, Long testId) {
+    public Question(String name, Long questionId) {
         this.name = name;
-        this.testId = testId;
+        this.questionId = questionId;
     }
 }

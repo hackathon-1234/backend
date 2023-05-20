@@ -1,4 +1,4 @@
-package com.hackathon2.file_service.controller;
+package com.hackathon2.controller;
 
 import com.hackathon2.file_service.dto.StoredFileDto;
 import com.hackathon2.file_service.service.StoredFileService;

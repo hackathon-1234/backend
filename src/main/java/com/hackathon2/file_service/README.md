@@ -11,3 +11,6 @@ curl -v -F id=1 -F "file=@\"C:\Users\HP\Downloads\ddd.jpg"" http://localhost:300
 3. Загрузка файла с сервера: (в браузере скачивается сразу как нужно)
 
 curl -o video.mp4 http://localhost:3005/public/file?id=1
+
+
+WARNING: сервис недоработан
