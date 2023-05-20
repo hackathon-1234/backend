@@ -9,10 +9,11 @@
             <column name="id" type="bigint" defaultValueComputed="nextval('test_sequence')">>
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="name" type="varchar(64)"/>
             <column name="activity_id" type="bigint"/>
         </createTable>
         <addForeignKeyConstraint constraintName="fk_test_activity" referencedTableName="activity"
                                  baseColumnNames="activity_id" baseTableName="test" referencedColumnNames="id" onDelete="CASCADE"/>
+        <loadData tableName="test" relativeToChangelogFile="true" file="../data/tests.csv" encoding="UTF-8" separator=";"/>
+
     </changeSet>
 </databaseChangeLog>

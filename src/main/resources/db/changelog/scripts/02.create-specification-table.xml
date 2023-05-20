@@ -12,5 +12,7 @@
             <column name="name" type="varchar(64)"/>
 
         </createTable>
+        <loadData tableName="specification" relativeToChangelogFile="true" file="../data/specifications.csv" encoding="UTF-8" separator=";"/>
+
     </changeSet>
 </databaseChangeLog>

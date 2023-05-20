@@ -14,5 +14,7 @@
         </createTable>
         <addForeignKeyConstraint constraintName="fk_question_test" referencedTableName="test"
                                  baseColumnNames="test_id" baseTableName="question" referencedColumnNames="id" onDelete="CASCADE"/>
+        <loadData tableName="question" relativeToChangelogFile="true" file="../data/questions.csv" encoding="UTF-8" separator=";"/>
+
     </changeSet>
 </databaseChangeLog>
