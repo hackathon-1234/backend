@@ -15,11 +15,11 @@ public class Question {
     private Long id;
     @Column("name")
     private String name;
-    @Column("question_id")
-    private Long questionId;
+    @Column("test_id")
+    private Long testId;
 
-    public Question(String name, Long questionId) {
+    public Question(String name, Long testId) {
         this.name = name;
-        this.questionId = questionId;
+        this.testId = testId;
     }
 }

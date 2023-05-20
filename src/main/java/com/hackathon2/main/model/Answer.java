@@ -17,6 +17,12 @@ public class Answer {
     private String name;
     @Column("is_correct")
     private Boolean isCorrect;
-    @Column("test_id")
-    private Long testId;
+    @Column("question_id")
+    private Long questionId;
+
+    public Answer(String name, Long questionId, Boolean isCorrect) {
+        this.name = name;
+        this.questionId = questionId;
+        this.isCorrect = isCorrect;
+    }
 }

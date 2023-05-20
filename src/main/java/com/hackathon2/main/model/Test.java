@@ -15,4 +15,8 @@ public class Test {
     private Long id;
     @Column("activity_id")
     private Long activityId;
+
+    public Test(Long activityId) {
+        this.activityId = activityId;
+    }
 }

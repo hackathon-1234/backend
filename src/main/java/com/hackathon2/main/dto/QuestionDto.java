@@ -7,7 +7,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class TestDto {
-    private Long activityId;
-    private List<QuestionDto> questions;
+public class QuestionDto {
+    private List<String> answers;
+    private Integer isCorrect;
+    private String name;
 }
