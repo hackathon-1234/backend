@@ -1,0 +1,12 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=
+    username: postgres
+    password:
+
+server:
+  port: 3005
+  servlet:
+    context-path: /back
