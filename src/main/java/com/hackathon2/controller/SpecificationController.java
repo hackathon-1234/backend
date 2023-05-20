@@ -18,18 +18,18 @@ public class SpecificationController {
 
     private final SpecificationService specificationService;
 
-    @GetMapping(value = "/new",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get-all")
     public ResponseEntity<Iterable<Specification>> getAll() {
         return ResponseEntity.ok(specificationService.getAll());
     }
 
-    @PostMapping(value = "/new",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/new")
     public ResponseEntity<String> create(@RequestParam String name) {
         specificationService.create(name);
         return ResponseEntity.ok("Успешно сохранено");
     }
 
-    @PostMapping(value = "/new",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/delete")
     public ResponseEntity<String> delete(@RequestParam Long id) {
         specificationService.delete(id);
         return ResponseEntity.ok("Успешно удалено");
