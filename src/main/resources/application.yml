@@ -2,9 +2,9 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=hackathon2
     username: postgres
-    password:
+    password: postgres
 
 server:
   port: 3005

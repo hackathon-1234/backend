@@ -19,6 +19,10 @@ public class Activity {
     @JoinColumn(name = "specification_id", referencedColumnName = "id")
     private Specification specification;
 
+    @OneToMany(mappedBy = "activity")
+    private List<Test> tests;
+
+
     public Activity(String name, Specification specification) {
         this.name = name;
         this.specification = specification;

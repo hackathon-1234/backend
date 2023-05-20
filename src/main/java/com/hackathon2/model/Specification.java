@@ -1,7 +1,5 @@
 package com.hackathon2.model;
 
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class Specification {
     @OneToMany(mappedBy = "specification")
     private List<User> users;
 
-//    не используется
+    //    не используется
     @OneToMany(mappedBy = "activity")
     private List<Activity> activities;
 
