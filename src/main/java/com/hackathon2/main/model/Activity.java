@@ -18,8 +18,5 @@ public class Activity {
     @Column("specification_id")
     private Long specificationId;
 
-    public Activity(String name) {
-        this.name = name;
-    }
 }
 
