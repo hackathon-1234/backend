@@ -1,2 +1,4 @@
-id;username;password;is_admin
-0;admin;$2a$10$sINGL2w4dlvwVsQ.Z7wt0.BmMMDal7HRum31Ax91wwdr4v6HUAF6a;true
+id;username;password;first_name;last_name;father_name;email;is_admin;specification_id
+0;ivan45;12345;Иван;Петров;Петрович;ivan45@gmail.com;false;null
+1;egor002;12345;Егор;Сидоров;Алексеевич;egor34@gmail.com;false;null
+2;dima99;12345;Дмитрий;Алексеев;Викторович;dima22@gmail.com;true;null

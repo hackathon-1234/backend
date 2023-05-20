@@ -1,4 +1,4 @@
-package com.hackathon2.auth.controller;
+package com.hackathon2.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

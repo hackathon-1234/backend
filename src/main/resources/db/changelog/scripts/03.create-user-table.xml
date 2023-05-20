@@ -3,7 +3,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create-user-table" author="timur">
+    <changeSet id="03.create-user-table" author="timur">
         <createSequence sequenceName="user_sequence" startValue="1" incrementBy="1"/>
         <createTable remarks="Таблица с данными пользователей" tableName="user">
             <column name="id" type="bigint" defaultValueComputed="nextval('user_sequence')">>
@@ -15,11 +15,13 @@
             <column name="specification_id" type="bigint"/>
 
             <column name="email" type="varchar(64)"/>
-            <column name="firstname" type="varchar(64)"/>
-            <column name="lastname" type="varchar(64)"/>
-            <column name="fathername" type="varchar(64)"/>
+            <column name="first_name" type="varchar(64)"/>
+            <column name="last_name" type="varchar(64)"/>
+            <column name="father_name" type="varchar(64)"/>
             <column name="profile_photo" type="bytea" remarks="Фото профиля"/>
         </createTable>
+        <addForeignKeyConstraint constraintName="fk_users_specification" referencedTableName="specification"
+                                 baseColumnNames="specification_id" baseTableName="user" referencedColumnNames="id" onDelete="CASCADE"/>
         <loadData tableName="user" relativeToChangelogFile="true" file="../data/users.csv" encoding="UTF-8" separator=";"/>
 
     </changeSet>

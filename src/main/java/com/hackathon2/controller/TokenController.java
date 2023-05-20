@@ -1,4 +1,4 @@
-package com.hackathon2.auth.controller;
+package com.hackathon2.controller;
 
 import com.hackathon2.auth.data.User;
 import com.hackathon2.auth.service.TokenService;
@@ -22,7 +22,7 @@ public class TokenController {
         this.tokenService = tokenService;
     }
 
-    @GetMapping("/login")
+    @GetMapping
     public ResponseEntity<?> getToken(@RequestParam(value = "username") String username,
                                    @RequestParam(value = "password") String password) {
         try {

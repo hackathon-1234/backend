@@ -12,4 +12,7 @@ public interface StoredFileRepository extends CrudRepository<StoredFile, Long> {
 	@Query("select id, name from files")
 	Iterable<StoredFile> findFilesList();
 
+//	@Query("select * from tests where activity_id = :id")
+//	List<StoredFile> findByParentId(@Param("id") Long id);
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="07.create-answer-table" author="makhach">
+        <createSequence sequenceName="answer_sequence" startValue="1" incrementBy="1"/>
+        <createTable tableName="answer">
+            <column name="id" type="bigint" defaultValueComputed="nextval('answer_sequence')">>
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(64)"/>
+            <column name="is_correct" type="boolean"/>
+            <column name="question_id" type="bigint"/>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_answer_question" referencedTableName="question"
+                                 baseColumnNames="question_id" baseTableName="answer" referencedColumnNames="id" onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>
