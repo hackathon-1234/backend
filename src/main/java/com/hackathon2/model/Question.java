@@ -16,7 +16,11 @@ public class Question {
     @Column("name")
     private String name;
 
-    public Question(String name) {
+    @Column("test_id")
+    private Long testId;
+
+    public Question(String name, Long testId) {
         this.name = name;
+        this.testId = testId;
     }
 }
