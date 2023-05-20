@@ -13,6 +13,6 @@ public interface StoredFileService {
 	String getName(Long id) throws FileNotFoundException;
 	void upload(Long id,byte[] content) throws FileNotFoundException;
 	byte[] download(Long id) throws FileNotFoundException;
-	void delete(Long id);
+	void delete(Long id) throws Exception;
 	
 }

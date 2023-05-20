@@ -6,7 +6,6 @@ import com.hackathon2.file_service.repo.StoredFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
@@ -96,9 +95,9 @@ public class StoredFileServiceImpl implements StoredFileService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Long id) throws Exception {
 		StoredFile storedFile = storedFileRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("Stored file with id# " + id + " not found"));
+				.orElseThrow(() -> new Exception());
 		storedFileRepository.delete(storedFile);
 	}
 }
