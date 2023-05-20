@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/token")
@@ -22,7 +23,8 @@ public class TokenController {
         this.tokenService = tokenService;
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.OPTIONS)
+//    @GetMapping
     public ResponseEntity<?> getToken(@RequestParam(value = "username") String username,
                                    @RequestParam(value = "password") String password) {
         try {
