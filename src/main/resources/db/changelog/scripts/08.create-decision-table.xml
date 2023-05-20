@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="08.create-decision-table" author="makhach">
+        <createSequence sequenceName="decision_sequence" startValue="1" incrementBy="1"/>
+        <createTable tableName="decision">
+            <column name="id" type="bigint" defaultValueComputed="nextval('decision_sequence')">>
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="user_id" type="bigint"/>
+            <column name="test_id" type="bigint"/>
+            <column name="time_of_decision" type="timestamp"/>
+            <column name="count_of_right_answers" type="int"/>
+            <column name="count_of_all_answers" type="int"/>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_decision_user" referencedTableName="user"
+                                 baseColumnNames="user_id" baseTableName="decision" referencedColumnNames="id" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint constraintName="fk_decision_test" referencedTableName="test"
+                                 baseColumnNames="test_id" baseTableName="decision" referencedColumnNames="id" onDelete="CASCADE"/>
+
+        <loadData tableName="decision" relativeToChangelogFile="true" file="../data/decisions.csv" encoding="UTF-8" separator=";"/>
+
+    </changeSet>
+</databaseChangeLog>

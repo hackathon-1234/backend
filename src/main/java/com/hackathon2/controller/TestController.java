@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class TestController {
 
-    @PostMapping("/new")
-    public ResponseEntity<String> create()
+//    @PostMapping("/new")
+//    public ResponseEntity<String> create()
 }
