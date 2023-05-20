@@ -1,8 +1,11 @@
 spring:
   main:
     allow-bean-definition-overriding: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=hackathon2
+    url: jdbc:postgresql://localhost:5432/hackathon2?currentSchema=public
     username: postgres
     password: postgres
 

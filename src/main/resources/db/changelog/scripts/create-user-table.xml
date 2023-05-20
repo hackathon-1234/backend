@@ -1,0 +1,26 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create-user-table" author="timur">
+        <createSequence sequenceName="user_sequence" startValue="1" incrementBy="1"/>
+        <createTable remarks="Таблица с данными пользователей" tableName="user">
+            <column name="id" type="bigint" defaultValueComputed="nextval('user_sequence')">>
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="username" type="varchar(64)" remarks="Логин"/>
+            <column name="password" type="varchar(64)" remarks="Пароль"/>
+            <column name="is_admin" type="boolean" remarks="Признак админа"/>
+            <column name="specification_id" type="bigint"/>
+
+            <column name="email" type="varchar(64)"/>
+            <column name="firstname" type="varchar(64)"/>
+            <column name="lastname" type="varchar(64)"/>
+            <column name="fathername" type="varchar(64)"/>
+            <column name="profile_photo" type="bytea" remarks="Фото профиля"/>
+        </createTable>
+        <loadData tableName="user" relativeToChangelogFile="true" file="../data/users.csv" encoding="UTF-8" separator=";"/>
+
+    </changeSet>
+</databaseChangeLog>

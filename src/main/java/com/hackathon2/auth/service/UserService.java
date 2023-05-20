@@ -26,9 +26,9 @@ public class UserService implements UserDetailsService {
         return new UserPrincipal(user);
     }
 
-    public void createUser(String login, String password) {
+    public void createUser(String username, String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
-        User user = new User(login, encoder.encode(password), false);
+        User user = new User(username, encoder.encode(password), false);
         userRepository.save(user);
     }
 }

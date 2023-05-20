@@ -1,6 +1,7 @@
 package com.hackathon2.auth.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloWorldController {
 
     @GetMapping
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<String> sendHello() {
         return ResponseEntity.ok("Hello world");
     }
