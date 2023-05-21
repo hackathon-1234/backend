@@ -5,6 +5,8 @@ import com.hackathon2.main.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
@@ -15,7 +17,7 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
-    public Iterable<Question> getBySpecificationId(Long id) {
+    public List<Question> getBySpecificationId(Long id) {
         return questionRepository.findByTestId(id);
     }
 

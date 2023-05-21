@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/activity")
 @RequiredArgsConstructor
@@ -17,6 +19,11 @@ public class ActivityController {
     @GetMapping(value = "/get-all")
     public ResponseEntity<Iterable<Activity>> getAll() {
         return ResponseEntity.ok(activityService.getAll());
+    }
+
+    @GetMapping(value = "/get")
+    public ResponseEntity<List<Activity>> getBySpecificationId(@RequestParam Long specificationId) {
+        return ResponseEntity.ok(activityService.getBySpecificationId(specificationId));
     }
 
     @PostMapping(value = "/new")

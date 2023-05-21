@@ -11,6 +11,8 @@ import com.hackathon2.main.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TestService {
@@ -23,7 +25,7 @@ public class TestService {
         return testRepository.findAll();
     }
 
-    public Iterable<Test> getBySpecificationId(Long id) {
+    public List<Test> getBySpecificationId(Long id) {
         return testRepository.findByActivityId(id);
     }
 

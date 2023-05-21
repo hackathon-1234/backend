@@ -1,12 +1,15 @@
 package com.hackathon2.controller;
 
 import com.hackathon2.main.dto.TestDto;
+import com.hackathon2.main.model.Activity;
 import com.hackathon2.main.model.Test;
 import com.hackathon2.main.services.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/test")
@@ -18,6 +21,11 @@ public class TestController {
     @GetMapping(value = "/get-all")
     public ResponseEntity<Iterable<Test>> getAll() {
         return ResponseEntity.ok(testService.getAll());
+    }
+
+    @GetMapping(value = "/get")
+    public ResponseEntity<List<Test>> getBySpecificationId(@RequestParam Long specificationId) {
+        return ResponseEntity.ok(testService.getBySpecificationId(specificationId));
     }
 
     @PostMapping(value = "/new")
