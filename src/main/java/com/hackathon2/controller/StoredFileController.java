@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 @RequestMapping("/file")
 @Controller
@@ -36,6 +37,11 @@ public class StoredFileController {
 	@GetMapping(value = "/get-all")
 	public ResponseEntity<Iterable<StoredFile>> getAll() {
 		return ResponseEntity.ok(storedFileService.getAll());
+	}
+
+	@GetMapping(value = "/get")
+	public ResponseEntity<List<StoredFile>> getByMaterialId(@RequestParam("material_id") Long materialId) {
+		return ResponseEntity.ok(storedFileService.getByMaterialId(materialId));
 	}
 
 	@PostMapping(value = "/upload", produces = MediaType.APPLICATION_JSON_VALUE)

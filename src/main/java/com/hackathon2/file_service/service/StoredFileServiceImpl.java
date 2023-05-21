@@ -3,7 +3,6 @@ package com.hackathon2.file_service.service;
 import com.hackathon2.file_service.domain.StoredFile;
 import com.hackathon2.file_service.dto.StoredFileDto;
 import com.hackathon2.file_service.repo.StoredFileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -111,7 +110,7 @@ public class StoredFileServiceImpl implements StoredFileService {
 		storedFileRepository.delete(storedFile);
 	}
 
-	public List<StoredFile> getByMaterialId(Long materialId) throws Exception {
+	public List<StoredFile> getByMaterialId(Long materialId) {
 		return storedFileRepository.findByMaterialId(materialId);
 	}
 }

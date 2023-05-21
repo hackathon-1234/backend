@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 public interface StoredFileService {
 	
@@ -20,5 +21,6 @@ public interface StoredFileService {
 	void delete(Long id) throws Exception;
 
 	Iterable<StoredFile> getAll();
+	List<StoredFile> getByMaterialId(Long materialId);
 	
 }
