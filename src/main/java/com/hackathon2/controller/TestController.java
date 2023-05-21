@@ -24,8 +24,8 @@ public class TestController {
     }
 
     @GetMapping(value = "/get")
-    public ResponseEntity<List<Test>> getBySpecificationId(@RequestParam Long specificationId) {
-        return ResponseEntity.ok(testService.getBySpecificationId(specificationId));
+    public ResponseEntity<TestDto> getBySpecificationId(@RequestParam Long activityId) {
+        return ResponseEntity.ok(testService.getByActivityId(activityId));
     }
 
     @PostMapping(value = "/new")

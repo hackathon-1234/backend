@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +26,20 @@ public class TestService {
         return testRepository.findAll();
     }
 
-    public List<Test> getBySpecificationId(Long id) {
-        return testRepository.findByActivityId(id);
+    public TestDto getByActivityId(Long activityId) {
+        TestDto testDto = new TestDto();
+        testDto.setActivityId(activityId);
+        List<Test> tests = testRepository.findByActivityId(activityId);
+        if (tests.size() == 0) return null;
+        Long testId = tests.get(0).getId();
+        List<Question> questions = questionRepository.findByTestId(testId);
+        for (Question question: questions) {
+            QuestionDto questionDto = new QuestionDto();
+            List<Answer> answers = answerRepository.findByQuestionId(question.getId());
+            questionDto.setAnswers(answers.stream().map(Answer::getName).collect(Collectors.toList()));
+            questionDto.setName(question.getName());
+        }
+        return testDto;
     }
 
     public void create(TestDto testDto) {

@@ -12,6 +12,7 @@
 			</column>
             <column name="name"                             type="varchar(128)"     remarks="Имя"/>
             <column name="content"                  		type="bytea"     		remarks="Содержимое файла"/>
+            <column name="material_id"                      type="bigint"/>
         </createTable>
 
     </changeSet>

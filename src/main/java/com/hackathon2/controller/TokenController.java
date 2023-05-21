@@ -24,7 +24,7 @@ public class TokenController {
     }
 
     @RequestMapping(method = RequestMethod.OPTIONS)
-//    @GetMapping
+    @GetMapping
     public ResponseEntity<?> getToken(@RequestParam(value = "username") String username,
                                    @RequestParam(value = "password") String password) {
         try {

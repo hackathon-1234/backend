@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -98,5 +99,9 @@ public class StoredFileServiceImpl implements StoredFileService {
 		StoredFile storedFile = storedFileRepository.findById(id)
 				.orElseThrow(Exception::new);
 		storedFileRepository.delete(storedFile);
+	}
+
+	public List<StoredFile> getByMaterialId(Long materialId) throws Exception {
+		return storedFileRepository.findByMaterialId(materialId);
 	}
 }
