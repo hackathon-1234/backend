@@ -5,8 +5,10 @@ import com.hackathon2.file_service.dto.StoredFileDto;
 import com.hackathon2.file_service.repo.StoredFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,16 +20,38 @@ public class StoredFileServiceImpl implements StoredFileService {
 	private static final String ERROR_MESSAGE = "File to update not found";
 
 	public StoredFileServiceImpl(StoredFileRepository storedFileRepository) {
-		super();
 		this.storedFileRepository = storedFileRepository;
 	}
 
 	@Override
-	public Long create(StoredFileDto file) {
+	public Iterable<StoredFile> getAll() {
+		return storedFileRepository.findFilesList();
+	}
+
+	@Override
+	public void create(MultipartFile file, Long materialId) throws IOException {
 		StoredFile f = StoredFile.builder()
 				.name(file.getName())
+				.materialId(materialId)
 				.build();
-		return storedFileRepository.save(f).getId();
+
+		Long fileId = storedFileRepository.save(f).getId();
+
+		upload(fileId, file.getBytes());
+	}
+
+	@Override
+	public void upload(Long id, byte[] content) throws FileNotFoundException {
+		Optional<StoredFile> oFile = storedFileRepository.findById(id);
+		if (oFile.isEmpty()) {
+			throw new FileNotFoundException(String.format(ERROR_MESSAGE,id));
+		}
+		else {
+			StoredFile file = oFile.get();
+			file.setContent(content);
+			storedFileRepository.save(file);
+		}
+
 	}
 
 	@Override
@@ -78,20 +102,6 @@ public class StoredFileServiceImpl implements StoredFileService {
 		else {
 			return oFile.get().getContent();
 		}
-	}
-
-	@Override
-	public void upload(Long id, byte[] content) throws FileNotFoundException {
-		Optional<StoredFile> oFile = storedFileRepository.findById(id);
-		if (oFile.isEmpty()) {
-			throw new FileNotFoundException(String.format(ERROR_MESSAGE,id));
-		}
-		else {
-			StoredFile file = oFile.get();
-			file.setContent(content);
-			storedFileRepository.save(file);
-		}
-		
 	}
 
 	@Override

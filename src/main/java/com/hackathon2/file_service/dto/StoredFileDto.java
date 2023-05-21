@@ -16,5 +16,4 @@ public class StoredFileDto {
     private Long id;
     private String name;
     private byte[] content;
-    private Long parentId;
 }

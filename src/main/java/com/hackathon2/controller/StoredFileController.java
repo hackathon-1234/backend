@@ -1,7 +1,9 @@
 package com.hackathon2.controller;
 
+import com.hackathon2.file_service.domain.StoredFile;
 import com.hackathon2.file_service.dto.StoredFileDto;
 import com.hackathon2.file_service.service.StoredFileService;
+import com.hackathon2.main.model.Specification;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -25,12 +27,19 @@ public class StoredFileController {
 	}
 
 	@PostMapping(value = "/new",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> createFile (@RequestBody StoredFileDto file) {
-        return ResponseEntity.ok(storedFileService.create(file).toString());
+    public ResponseEntity<String> createFile (@RequestParam("material_id") Long materialId,
+											  @RequestParam("file") MultipartFile file) throws IOException {
+		storedFileService.create(file, materialId);
+        return ResponseEntity.ok("Файл успешно сохранен");
     }
 
+	@GetMapping(value = "/get-all")
+	public ResponseEntity<Iterable<StoredFile>> getAll() {
+		return ResponseEntity.ok(storedFileService.getAll());
+	}
+
 	@PostMapping(value = "/upload", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity uploadFile (@RequestParam("id") Long id,
+    public ResponseEntity<?> uploadFile (@RequestParam("id") Long id,
     		@RequestParam("file") MultipartFile file) {
     	try {
 			storedFileService.upload(id, file.getBytes());

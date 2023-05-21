@@ -24,7 +24,7 @@ public class TestController {
     }
 
     @GetMapping(value = "/get")
-    public ResponseEntity<TestDto> getBySpecificationId(@RequestParam Long activityId) {
+    public ResponseEntity<TestDto> getByActivityId(@RequestParam Long activityId) {
         return ResponseEntity.ok(testService.getByActivityId(activityId));
     }
 

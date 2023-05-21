@@ -20,4 +20,6 @@ public class StoredFile {
     private String name;
     @Column("content")
     private byte[] content;
+    @Column("material_id")
+    private Long materialId;
 }
